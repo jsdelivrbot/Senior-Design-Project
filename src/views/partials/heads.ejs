@@ -1,0 +1,132 @@
+
+<!--<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a style="color: #bd2132;"class="brand" onclick="home(this)" href="/homepage/">
+      <img src="http://midwestrealty.com/wp-content/uploads/2016/05/Midwest_Logo.png"  width="80px" class="img img-responsive img-square"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a style="display: block;color: #bd2132;" onclick="home(this)" href="/homepage/">Home</a></li>
+        <li class="dropdown">
+
+          <a style="display: block;color: #bd2132;" href="#" class="dropdown-toggle" data-toggle="dropdown">Users<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a style="color: #bd2132;" href="/users/createuser">Create Users</a></li>
+            <li><a style="color: #bd2132;" href="/users/userslist">View Users</a></li>
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a style="display: block;color: #bd2132;" href="#" class="dropdown-toggle" data-toggle="dropdown">Tickets <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <li><a style="color: #bd2132;" href="/tickets/addticket">Add Tickets</a></li>
+          <li><a style="color: #bd2132;" href="/tickets/ticketlist">Parking Lot</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a style="display: block;color: #bd2132;" href="#" class="dropdown-toggle" data-toggle="dropdown">Calendar <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a style="color: #bd2132;" href="/schedule/weekly">Weekly Schedule</a></li>
+            <li><a style="color: #bd2132;" href="/schedule/monthly">Monthly Schedule</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/"onclick="logOut(this)"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+</body>
+-->
+
+<title>Midwest Realty Group LLC - Kalamazoo, Michigan Commercial Real Estate</title>
+</head>
+
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<div class="navbar">
+
+  <div class="container">
+
+    <a style="color: #bd2132;"class="brand" onclick="home(this)" href="/homepage/" >
+    <img src="http://midwestrealty.com/wp-content/uploads/2016/05/Midwest_Logo.png"  width="85px" class="img img-responsive img-square"></a>
+    <div class="nav-collapse">
+      <ul class="nav">
+        <li class="active"><a style="display: block; padding: 1.5em;color: #bd2132;" onclick="home(this)" href="/homepage/">Home</a></li>
+
+
+        <li class="dropdown">
+          <a style="display: block; padding: 1.5em;color: #bd2132;" href="#" class="dropdown-toggle" data-toggle="dropdown">Users<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+          <li><a style="color: #bd2132;" href="/users/createuser">Create Users</a></li>
+<li><a style="color: #bd2132;" href="/users/userslist">View Users</a></li>
+</ul>
+</li>
+<li class="dropdown">
+  <a style="display: block; padding: 1.5em;color: #bd2132;" href="#" class="dropdown-toggle" data-toggle="dropdown">Tickets <b class="caret"></b></a>
+  <ul class="dropdown-menu">
+    <li><a style="color: #bd2132;" href="/tickets/addticket">Add Tickets</a></li>
+    <!--Need to check if admin
+    <li class="nav-header">Assign Tickets</li>
+    <li><a href="/tickets/ticketlist">View Your Tickets</a></li>
+  -->
+
+    <li><a style="color: #bd2132;" href="/tickets/ticketlist">Parking Lot</a></li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a style="display: block; padding: 1.5em;color: #bd2132;" href="#" class="dropdown-toggle" data-toggle="dropdown">Calendar <b class="caret"></b></a>
+  <ul class="dropdown-menu">
+    <li><a style="color: #bd2132;" href="/schedule/weekly">Weekly Schedule</a></li>
+    <li><a style="color: #bd2132;" href="/schedule/monthly">Monthly Schedule</a></li>
+  </ul>
+</li>
+</ul>
+<ul class="nav pull-right">
+  <button href="/logout" style="background-color:#bb2436"onclick="logOut(this)" class="btn btn-danger">LogOut</button>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+
+<!--
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a style="color: #bd2132;"class="brand" onclick="home(this)" href="/homepage/">
+  <img src="http://midwestrealty.com/wp-content/uploads/2016/05/Midwest_Logo.png"  width="80px" class="img img-responsive img-square"></a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+-->

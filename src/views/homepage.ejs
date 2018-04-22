@@ -1,0 +1,132 @@
+  <% include ./partials/head %>
+  <% include ./partials/header %>
+  <style>
+body{
+  background-color: #D5D4D2;
+  overflow: scroll;
+  color:white;
+}
+th{
+  background-color: #bd2132;
+  color: #e5e5e5;
+  text-align: center !important;
+}
+td{
+  color: #bd2132;
+  background-color: white;
+  text-align: center !important;
+}
+table{
+  width:80% !important;
+}
+  </style>
+
+
+  <script src="/javascript/homepageController.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.min.js"></script>
+
+
+<body ng-app="HomePage" ng-controller="HomePageController"background="http://www.modafinilsale.com/data/out/727/233440814-grey-wood.jpg">
+
+<div style="text-align:center">
+<h3 style="font-size:40px;text-shadow: 2px 2px 2px #000;" class="lead">Welcome to Your TicketList {{user.user.name}}!</h3>
+<p style="text-shadow: 2px 2px 2px #000;">Welcome to the MRG Ticket Application(beta)! If there are any problems please go to the feedback tab and send the developers a email directly! Thanks!</p>
+</div>
+
+<div align="center">
+<a style="text-align:center; background-color:#bd2132;text-shadow: 2px 2px 2px #000;" href="/tickets/addticket" class="btn btn-danger">Create A New Ticket</a>
+<a style="text-align:center; background-color:#bd2132;text-shadow: 2px 2px 2px #000;" href="/tickets/ticketlist" class="btn btn-danger">Go To TicketList</a>
+</div>
+
+<h1 style="text-align: center; font-size:40px;text-shadow: 2px 2px 2px #000;" class="lead">Assigned To You</h1>
+
+            <table align="center" class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Ticket Title</th>
+                  <th>Due Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr ng-repeat="ticket in tickets.tickets | filter : user.user.name">
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.tickettitle }}</a></td>
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.duedate }}</a></td>
+                  </tr>
+              </tbody>
+            </table>
+
+
+          <h2 style="text-align: center; font-size:40px;text-shadow: 2px 2px 2px #000;" class="lead">Upcoming Tickets</h2>
+
+            <!-- <div class="panel" style="width:500px;" align="center"> -->
+            <table class="table table-bordered" align="center">
+                <tr>
+                  <th colspan="2"><strong>{{ today | date : "fullDate" }}</strong></th>
+                </tr>
+              <tbody>
+                <tr>
+                  <tr ng-repeat="ticket in tickets.tickets | myDate">
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.tickettitle }}</a></td>
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.duedate }}</a></td>
+                  </tr>
+                </tr>
+                <tr>
+                  <th colspan="2"><strong>{{ tomorrow | date : "fullDate" }}</strong></th>
+                </tr>
+                <tr>
+                  <tr ng-repeat="ticket in tickets.tickets | myDate2">
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.tickettitle }}</a></td>
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.duedate }}</a></td>
+                  </tr>
+                </tr>
+                <tr>
+                  <th colspan="2"><strong>{{ tomorrow1 | date : "fullDate" }}</strong></th>
+                </tr>
+                <tr>
+                  <tr ng-repeat="ticket in tickets.tickets | myDate3">
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.tickettitle }}</a></td>
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.duedate }}</a></td>
+                  </tr>
+                </tr>
+                <tr>
+                  <th colspan="2"><strong>{{ tomorrow2 | date : "fullDate" }}</strong></th>
+                </tr>
+                <tr>
+                  <tr ng-repeat="ticket in tickets.tickets | myDate4">
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.tickettitle }}</a></td>
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.duedate }}</a></td>
+                  </tr>
+                </tr>
+                <tr>
+                  <th colspan="2"><strong>{{ tomorrow3 | date : "fullDate" }}</strong></th>
+                </tr>
+                <tr>
+                  <tr ng-repeat="ticket in tickets.tickets | myDate5">
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.tickettitle }}</a></td>
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.duedate }}</a></td>
+                  </tr>
+                </tr>
+                <tr>
+                  <th colspan="2"><strong>{{ tomorrow4 | date : "fullDate" }}</strong></th>
+                </tr>
+                <tr>
+                  <tr ng-repeat="ticket in tickets.tickets | myDate6">
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.tickettitle }}</a></td>
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.duedate }}</a></td>
+                  </tr>
+                </tr>
+                <tr>
+                  <th colspan="2"><strong>{{ tomorrow5 | date : "fullDate" }}</strong></th>
+                </tr>
+                <tr>
+                  <tr ng-repeat="ticket in tickets.tickets | myDate7">
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.tickettitle }}</a></td>
+                  <td><a style="color:#bd2132;" id="{{ $index + 1 }}" href="/tickets/viewticketinformation/?id={{ticket._id}}" ng-click="viewTicket(ticket._id)">{{ ticket.duedate }}</a></td>
+                  </tr>
+                </tr>
+              </tbody>
+            </table>
+  </body>
+  </html>
+
+  <% include ./partials/footer %>

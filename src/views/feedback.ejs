@@ -1,0 +1,25 @@
+<% include ./partials/head %>
+<% include ./partials/header %>
+<script src="/javascript/feedbackController.js"></script>
+<style type="text/css">
+
+body{
+  background-color: #D5D4D2;
+}
+textarea {padding:8px; width:70%;}
+</style>
+
+<body ng-app="Feedback" ng-controller="FeedbackController"background="http://www.modafinilsale.com/data/out/727/233440814-grey-wood.jpg">
+<div class="outer" align="center">
+        <div style="padding-left:20px;">
+         <h2 class="lead" style=" font-size:40px;color:white;text-shadow: 2px 2px 2px #000;">Give Us FeedBack!</h2>
+         <p style="color:white;text-shadow: 2px 2px 2px #000;">Good? Bad? We want to hear about it and fix it!</p>
+       </div>
+       <ul>
+         <textarea name="description" cols="40" rows="6" ng-model="description"></textarea>
+       </ul>
+<div style="text-align:center; padding-left:50px;">
+<button style="background-color:#bd2132;" class="btn btn-danger" ng-click="sendMail()" >Send FeedBack</button>
+</div>
+</div>
+</body>

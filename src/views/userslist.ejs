@@ -1,0 +1,64 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<% include ./partials/head %>
+<% include ./partials/header %>
+<script src="/javascript/usersListController.js"></script>
+<style >
+body{
+  background-color: #D5D4D2;
+  overflow: scroll;
+}
+.table th {
+ text-align: center;
+}
+.table td {
+ text-align: center;
+ background-color: white;
+}
+
+</style>
+<body ng-app="UsersList" ng-controller="UsersListController"background="http://www.modafinilsale.com/data/out/727/233440814-grey-wood.jpg">
+<h1 style="text-align:center; font-size:40px; color:white;text-shadow: 2px 2px 2px #000;" class="lead">All Users</h1>
+<div class="panel panel-default">
+<table class=" table table-responsive-md" ng-show="isAdmin">
+<thead style="align:center;">
+  <tr>
+    <td class="lead" style="font-size:30px;">Employee/Tenant Name</td>
+    <td class="lead" style="font-size:30px;">Employee/Tenant Username</td>
+    <td class="lead" style="font-size:30px;">Permissions</td>
+    <td class="lead" style="font-size:30px;">Created Date</td>
+    <td class="lead" style="font-size:30px;">Options</td>
+  </tr>
+</thead>
+<tbody>
+    <tr ng-repeat="user in users" ng-if="findAdmin(user)">
+      <td class="lead">{{user.name}}</td>
+      <td class="lead">{{user.username}}</td>
+      <td class="lead">{{user.permissions}}</td>
+      <td class="lead">{{user.timestamp | date :  "dd.MM.y" }}</td>
+      <td>
+      <ul>
+        <button class="btn btn-danger" ng-click="deleteUser(user._id)">Delete</button>
+        <button class="btn btn-primary" ng-click="editUser(user._id)">Edit User</button>
+      </ul>
+    </td>
+    </tr>
+</tbody>
+</table>
+<table class=" table table-responsive-md" ng-show="!isAdmin">
+<thead style="align:center;">
+  <tr>
+    <td class="lead" style="font-size:30px;">Employee Name</td>
+    <td class="lead" style="font-size:30px;">Employee Username</td>
+  </tr>
+</thead>
+<tbody>
+    <tr ng-repeat="user in users">
+      <td class="lead">{{user.name}}</td>
+      <td class="lead">{{user.username}}</td>
+    </tr>
+</tbody>
+</table>
+</div>
+</body>
+<% include ./partials/footer %>
+</html>

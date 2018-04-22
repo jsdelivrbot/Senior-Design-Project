@@ -1,0 +1,93 @@
+<% include ./partials/head %>
+<% include ./partials/header %>
+<style type="text/css">
+
+body{
+  background-color: #D5D4D2;
+
+}
+.contact_form ul{
+padding:5px;
+}
+.contact_form label {
+width:150px;
+padding:3px;
+}
+.form_hint {
+background: #d45252;
+border-radius: 3px 3px 3px 3px;
+color: white;
+margin-left:8px;
+padding: 1px 6px;
+z-index: 999; /* hints stay above all other elements */
+position: absolute; /* allows proper formatting if hint is two lines */
+display: none;
+}
+.form_hint::before {
+content: "\25C0"; /* left point triangle in escaped unicode */
+color:#d45252;
+position: absolute;
+top:1px;
+left:-6px;
+}
+.contact_form input:focus + .form_hint {display: inline;}
+.contact_form input:required:valid + .form_hint {background: #28921f;} /* change form hint color when valid */
+.contact_form input:required:valid + .form_hint::before {color:#28921f;} /* change form hint arrow color when valid */
+</style>
+
+<script src="/javascript/addUserController.js"></script>
+<body ng-app="AddUser" ng-controller="AddUserController"background="http://www.modafinilsale.com/data/out/727/233440814-grey-wood.jpg">
+
+<div class="outer" align="center">
+  <form class="contact_form" action="/users/create" method="post" name="contact_form">
+
+         <h2 class="lead" style=" font-size:40px;color:white;text-shadow: 2px 2px 2px #000;">Create an Account</h2>
+         <% if(feedback.length > 1){ %>
+            <p style="color: #bd2132; text-align:center; padding-top: 20px;"><%= feedback %></p>
+         <% } %>
+    <ul>
+        <label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Employee Name:</label><br>
+        <input style="height:30px;border: .5px solid black;" type="text" name="name" />
+        <span class="form_hint">required</span>
+    </ul>
+<ul>
+    <label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Username:</label><br>
+    <input style="height:30px;border: .5px solid black;" type="text" name="username" />
+    <span class="form_hint">required</span>
+</ul>
+<ul>
+  <label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Permissions</label><br>
+    <select style="height:30px;border: .5px solid black;" name="permissions" class="dropdown">
+                <option>Choose Permission Level...</option>
+                <option>Admin</option>
+                <option>Employee</option>
+                <option>Tenant</option>
+    </select>
+</ul>
+<!-- <ul>
+    <label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Employee of Midwest?</label><br>
+      <select style="height:30px;border: .5px solid black;" name="employee" class="dropdown">
+                  <option>Choose Yes or No...</option>
+                  <option>Yes</option>
+                  <option>No</option>
+              </select>
+</ul> -->
+<ul>
+    <label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Type Password:</label><br>
+    <input style="height:30px;border: .5px solid black;" type="password" name="password" />
+    <span class="form_hint">required</span>
+</ul>
+<ul>
+<label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Type Password Again:</label><br>
+<input style="height:30px;border: .5px solid black;" type="password" name="password2" />
+<span class="form_hint">required</span>
+</ul>
+<div style="text-align:center; padding-top: 50px; ">
+<button style="background-color:#bd2132; text-align:center; width:200px;color:white;" class="btn btn-danger" type="submit">Add User</button>
+</div>
+</form>
+</div>
+</body>
+
+
+<% include ./partials/footer %>

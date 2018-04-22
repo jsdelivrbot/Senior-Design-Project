@@ -1,0 +1,89 @@
+<% include ./partials/head %>
+<% include ./partials/header %>
+<script src="/javascript/viewTicketController.js"></script>
+  <body ng-app="ViewTicket" ng-controller="ViewTicketController"background="http://www.modafinilsale.com/data/out/727/233440814-grey-wood.jpg">
+<h3 class="lead" style="text-align: center; font-size:40px;color:white;text-shadow: 2px 2px 2px #000;">Ticket Information</h3>
+<style>
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+.list-group{
+      display:inline-block;
+      text-align: center;
+      align-self: center;
+      vertical-align: top;
+
+ }
+ div{
+   z-index: -1;
+ }
+ ul{
+    z-index: -1;
+ }
+body{
+  background-color: #D5D4D2;
+
+
+}
+.green-box{
+   z-index: -1;
+}
+
+</style>
+
+
+<div style="text-align:center;" align="center">
+
+  <div id="table1" style="z-index:-1;"class= "green-box" align="center">
+    <h2 class="lead" style="text-align: center; font-size:40px;color:white;text-shadow: 2px 2px 2px #000;">#{{ticket.ticket.id}}  {{ ticket.ticket.tickettitle }}</h2>
+    <!-- <h2 class="lead" style="text-align: center; font-size:40px;">{{ ticket.ticket.tickettitle }} </h2> -->
+    <ul class="list-group" align="center" width="20px">
+      <li style="word-wrap:break-word;display:block;width:auto;" class="list-group-item"><strong>Ticket Description:</strong><br> {{ ticket.ticket.ticketdescription }}</li>
+      <li class="list-group-item"><strong>Company/Tenant Name:</strong><br> {{ ticket.ticket.companyname }}</li>
+      <li class="list-group-item"><strong>Location of Issue:</strong><br> {{ ticket.ticket.location }}</li>
+      <li class="list-group-item"><strong>Ticket Priority Level:</strong><br> {{ ticket.ticket.prioritylevel }}</li>
+      <li class="list-group-item"><strong>Ticket is Assigned to:</strong><br> {{ ticket.ticket.assignedto }}</li>
+      <li class="list-group-item"><strong>Ticket Due Date :</strong><br> {{ ticket.ticket.duedate }}</li>
+      <li ng-if=" ticket.ticket.status  == 'In Progress' || ticket.ticket.status  == 'Completed'"class="list-group-item"><strong>Current Status :</strong><br><span style="color:green"> {{ ticket.ticket.status }}</span></li>
+      <li ng-if=" ticket.ticket.status  == 'not started'" class="list-group-item"><strong>Current Status :</strong><br><span style="color:red"> {{ ticket.ticket.status }}</span></li>
+      <li ng-if=" ticket.ticket.status  == 'On Hold'" class="list-group-item"><strong>Current Status :</strong><br><span style="color:orange"> {{ ticket.ticket.status }}</span></li>
+      <li class="list-group-item"><strong>Date Ticket was Created :</strong><br> {{ ticket.ticket.timestamp | date :  "fullDate" }}</li>
+      <li align="center" class="list-group-item">
+      <button href=""align="center" type="button" ng-click="editTicket()" class="btn btn-info">Edit</button>
+      <button align="center" type="button" ng-click="deleteTicket()" ng-show="isAdmin" class="btn btn-danger">Delete</button>
+      <button href=""align="center" type="button" ng-click="onHold()" class="btn btn-primary" style="background-color:orange; border-color:orange">Put On Hold</button>
+      <button align="center" type="button" ng-click="inProgress()" class="btn btn-primary">Put In Progress</button>
+      <button align="center" type="button" ng-click="completeTicket()" class="btn btn-success">Complete Ticket</button>
+    </li>
+    </ul>
+  </div>
+
+          <div class="form-group"id="table2" align="center">
+            <h2 class="lead" style="text-align: center; font-size:40px; color:white;text-shadow: 2px 2px 2px #000;">Comments</h2>
+          <ul class="list-group" align="center" width="20px">
+          <li class="list-group-item" ng-repeat="comment in comments" ><strong>{{comment.name}}</strong><br>{{comment.comment}}</li>
+          <div style="padding-top:20px;">
+              <label for="comment" style="color:white;text-shadow: 2px 2px 2px #000;">Comment on Ticket:</label>
+              <input type="comment" class="form-control" id="comment" ng-model="comment">
+              <br>
+          <button style="background:#bd2132;color:white;" ng-click="addComment()" class="btn btn-danger" >Add Comment</button>
+          </div>
+          </li>
+
+          <h2 class="lead" style="text-align: center; font-size:40px;color:white;text-shadow: 2px 2px 2px #000;">Attachments</h2>
+          <li class="list-group-item" ng-repeat="file in files" ng-click="downloadAttachment(file)">{{file}}</li>
+
+        <div style="padding-top:20px;">
+          <form method="post" action="{{formUrl}}" enctype="multipart/form-data">
+          <input type="file" name="file">
+          <br>
+          <button style="background:#bd2132;color:white;" type="submit" class="btn btn-danger">Add Attachment</button>
+          </form>
+        </div>
+        <div align="center" style="color:red;"><%= feedback %></div>
+      </ul>
+    </div>
+  </div>
+</body>
+<% include ./partials/footer %>

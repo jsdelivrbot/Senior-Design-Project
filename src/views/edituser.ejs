@@ -1,0 +1,60 @@
+  <% include ./partials/head %>
+  <% include ./partials/header %>
+  <script src="/javascript/editUserController.js"></script>
+  <style type="text/css">
+
+  body{
+    background-color: #D5D4D2;
+
+  }
+  .contact_form ul{
+  padding:5px;
+  }
+  .contact_form label {
+  width:150px;
+  padding:3px;
+  }
+  .form_hint {
+  background: #d45252;
+  border-radius: 3px 3px 3px 3px;
+  color: white;
+  margin-left:8px;
+  padding: 1px 6px;
+  z-index: 999; /* hints stay above all other elements */
+  position: absolute; /* allows proper formatting if hint is two lines */
+  display: none;
+  }
+  .form_hint::before {
+  content: "\25C0"; /* left point triangle in escaped unicode */
+  color:#d45252;
+  position: absolute;
+  top:1px;
+  left:-6px;
+  }
+  .contact_form input:focus + .form_hint {display: inline;}
+  .contact_form input:required:valid + .form_hint {background: #28921f;} /* change form hint color when valid */
+  .contact_form input:required:valid + .form_hint::before {color:#28921f;} /* change form hint arrow color when valid */
+  </style>
+<body ng-app="EditUser" ng-controller="EditUserController"background="http://www.modafinilsale.com/data/out/727/233440814-grey-wood.jpg">
+  <div class="outer" align="center">
+          <div style="padding-left:20px;">
+           <h2 class="lead" style=" font-size:40px;color:white;text-shadow: 2px 2px 2px #000;">Edit User</h2>
+         </div>
+      <ul>
+          <label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Employee Name</label><br>
+          <input style="height:30px;" type="text" name="name" ng-model="name"/>
+      </ul>
+  <ul>
+      <label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Username</label><br>
+      <input style="height:30px;" type="text" name="username" ng-model="username" />
+  </ul>
+  <ul>
+      <label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Password</label><br>
+      <input style="height:30px;" type="text" name="password" ng-model="password" />
+  </ul>
+  <div align="center;">
+  <button style="background-color:#bd2132;color:white;" class="btn btn-danger" ng-click="saveUser()">Save User</button>
+  </div>
+
+  </div>
+  </body>

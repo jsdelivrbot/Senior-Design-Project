@@ -1,0 +1,117 @@
+<% include ./partials/head %>
+<% include ./partials/header %>
+<style type="text/css">
+
+body{
+  background-color: #D5D4D2;
+
+}
+.contact_form ul{
+padding:5px;
+}
+
+.contact_form label {
+width:150px;
+
+padding:3px;
+}
+.contact_form textarea {padding:8px; width:50%;}
+/* Button Style */
+
+.form_hint {
+background: #d45252;
+border-radius: 3px 3px 3px 3px;
+color: white;
+margin-left:8px;
+padding: 1px 6px;
+z-index: 99; /* hints stay above all other elements */
+position: absolute; /* allows proper formatting if hint is two lines */
+display: none;
+}
+.form_hint::before {
+content: "\25C0"; /* left point triangle in escaped unicode */
+color:#d45252;
+position: absolute;
+top:1px;
+left:-6px;
+}
+.contact_form input:focus + .form_hint {display: inline;}
+.contact_form input:required:valid + .form_hint {background: #28921f;} /* change form hint color when valid */
+.contact_form input:required:valid + .form_hint::before {color:#28921f;} /* change form hint arrow color when valid */
+</style>
+<!-- For the built-in calendar for the date field -->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $("#datepicker").datepicker();
+  });
+</script>
+<script src="/javascript/addTicketController.js"></script>
+<body ng-app="AddTicket" ng-controller="AddTicketController" background="http://www.modafinilsale.com/data/out/727/233440814-grey-wood.jpg">
+
+
+
+<div class="outer" align="center">
+  <form class="contact_form" action="/tickets/create" method="post" name="contact_form">
+
+         <span class="lead" style=" font-size:40px; color:white;text-shadow: 2px 2px 2px #000;">Add Ticket</span>
+
+
+    <ul>
+        <label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Ticket Title:</label><br>
+        <input style="height:30px; width: 250px;border: .5px solid black;" type="text" name="title" />
+        <span class="form_hint">required</span>
+    </ul>
+<ul>
+    <label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Company/Tenant Name:</label><br>
+      <select style="height:30px;border: .5px solid black;" name="companyname" class="dropdown">
+                  <option>MRG</option>
+                  <option ng-repeat="user in users.users" ng-if="companyCheck(user)">
+                    <span>{{user.name}}</span>
+                  </option>
+      </select>
+</ul>
+<ul>
+    <label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Location(Address):</label><br>
+    <input style="height:30px;border: .5px solid black;" type="text" name="location" />
+    <span class="form_hint">required</span>
+</ul>
+<ul>
+    <label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Assign To:</label><br>
+    <select style="height:30px;border: .5px solid black;" name="assign" class="dropdown">
+                <option>Employees</option>
+                <option ng-repeat="user in users.users" ng-if="employeeCheck(user)">
+                  {{user.name}}
+                </option>
+            </select>
+</ul>
+<ul>
+<label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Priority:</label><br>
+<select style="height:30px;border: .5px solid black;" name="priority" class="dropdown">
+            <option>Critical</option>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+        </select>
+</ul>
+      <ul>
+            <label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Due Date:</label><br>
+            <input style="height:30px;border: .5px solid black;"type="text" name="due" id="datepicker" />
+      </ul>
+  <ul>
+    <label class="lead" style="width:100%;font-size:15px; color:white;text-shadow: 2px 2px 2px #000;"><b>Ticket Description:</b></label><br>
+    <textarea name="description" style="border: .5px solid black;"cols="40" rows="6" ></textarea>
+    <span class="form_hint">required</span>
+  </ul>
+  <ul>
+    <div align="center">
+      <button style="margin-bottom:20px; background:#bd2132;color:white;" class="btn btn-danger" type="submit" name="button">Add Ticket</button>
+  </div>
+  </ul>
+</ul>
+</div>
+</body>
+<% include ./partials/footer %>

@@ -1,0 +1,63 @@
+<% include ./partials/head %>
+<% include ./partials/header %>
+<script src="/javascript/searchController.js"></script>
+<style type="text/css">
+body{
+  background-color: #D5D4D2;
+
+}
+td{
+  text-align: center
+}
+</style>
+<body ng-app="Search" ng-controller="SearchController" data-ng-init="search()"background="http://www.modafinilsale.com/data/out/727/233440814-grey-wood.jpg">
+<div class="outer" align="center">
+  <div>
+         <h2 class="lead" style="font-size:40px;color:white;text-shadow: 2px 2px 2px #000;">Ticket Search</h2>
+  </div>
+<table>
+<tbody>
+  <tr>
+    <td>
+        <label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Search By Title:</label><br>
+        </td></tr><tr><td>
+        <input style="height:30px;" type="text" name="name" ng-model="title"/>
+      </td>
+</tr>
+<tr><td style=" font-size:15px;color:white;padding-top:20px;"></td></tr><br>
+<tr><td>
+    <label class="lead" style=" font-size:15px;color:white;text-shadow: 2px 2px 2px #000;"><b>Search By Ticket Number:</label><br>
+    </td>
+    </tr>
+    <tr>
+      <td>
+    <input style="height:30px;" type="text" name="name" ng-model="number" />
+  </td>
+</tr>
+</tbody>
+</table>
+<div style="text-align:center; padding-top:20px;">
+<button style="background-color:#bd2132;" class="btn btn-danger" ng-click="search()">Search For Ticket</button>
+</div>
+<div align="center">
+<div class="panel" style="max-width:1000px; text-align:center;" ng-show="results">
+  <span class="list-group" ng-repeat="ticket in tickets">
+    <a href="/tickets/viewticketinformation/?id={{ticket._id}}" class="list-group-item list-group-item-action flex-column align-items-start" ng-show="searchKeywords(ticket)"style= "background-color:#BB2436; color:#FFFFFF">
+      <h2 style="text-align: center; font-size:40px;" class="lead">#{{ticket.id}} {{ ticket.tickettitle }}</h2>
+      <small style="text-align: center;" class="lead">Priority: {{ ticket.prioritylevel }}</small><br>
+      <small style="text-align: center;" class="lead">Assigned To: {{ ticket.assignedto }}</small>
+    </a>
+  </span>
+<span class="list-group" ng-repeat="ticket in tickets">
+  <a href="/tickets/viewticketinformation/?id={{ticket._id}}" class="list-group-item list-group-item-action flex-column align-items-start" ng-show="searchKeyword(ticket)">
+    <h2 style="text-align: center; font-size:40px;" class="lead">#{{ticket.id}} {{ ticket.tickettitle }}</h2>
+    <small style="text-align: center;" class="lead">Priority: {{ ticket.prioritylevel }}</small><br>
+    <small style="text-align: center;" class="lead">Assigned To: {{ ticket.assignedto }}</small>
+  </a>
+</span>
+</div>
+
+</div>
+<h4 ng-show="searchFailed" style="color:red;">No Ticket Found</h4>
+</div>
+</body>

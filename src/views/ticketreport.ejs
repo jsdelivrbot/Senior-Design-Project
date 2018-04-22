@@ -1,0 +1,90 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<% include ./partials/head %>
+<% include ./partials/header %>
+<script src="/javascript/ticketReport.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.20.0/select.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.20.0/select.min.js"></script>
+<style>
+body{
+  background-color: #D5D4D2;
+  overflow: scroll;
+}
+</style>
+<body ng-app="TicketReportApp" ng-controller="TicketReport"background="http://www.modafinilsale.com/data/out/727/233440814-grey-wood.jpg">
+<h1 style="text-align:center; font-size:40px;color:white;text-shadow: 2px 2px 2px #000;" class="lead">Ticket Report</h1>
+
+<div align="center" style="padding-bottom:20px;">
+<table>
+  <tbody>
+    <td style="padding-right:20px;">
+    <button class="btn btn-primary" ng-click="sortByTitle()">Sort By Title</button>
+    </td>
+    <td style="padding-right:20px;">
+  <ui-select ng-model="$parent.selectedStatus" theme="bootstrap" style="width:200px;">
+    <ui-select-match allow-clear="true" placeholder="Filter By Status...">
+      <span>{{$select.selected}}</span>
+    </ui-select-match>
+
+    <ui-select-choices repeat="s in statusArray track by $index">
+      <div>{{s}}</div>
+    </ui-select-choices>
+  </ui-select>
+</td>
+<td>
+  <ui-select ng-model="$parent.selectedPriority" theme="bootstrap" style="width:200px;">
+    <ui-select-match allow-clear="true" placeholder="Filter By Priority...">
+      <span>{{$select.selected}}</span>
+    </ui-select-match>
+    <ui-select-choices repeat="p in priorityArray track by $index">
+      <div>{{p}}</div>
+    </ui-select-choices>
+  </ui-select>
+</td>
+<td style="padding-left:20px;">
+<ui-select ng-model="$parent.selectedCompany" theme="bootstrap" style="width:200px;">
+<ui-select-match allow-clear="true" placeholder="Filter By Company...">
+  <span>{{$select.selected}}</span>
+</ui-select-match>
+<ui-select-choices repeat="company in companyArray track by $index">
+  <div>{{company}}</div>
+</ui-select-choices>
+</ui-select>
+</td>
+<td style="padding-left:20px;">
+<button class="btn btn-primary" ng-click="sortByDue()">Sort By Due Date</button>
+</td>
+</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+<table class="table table-bordered">
+<thead>
+<th>Ticket #</th>
+<th>Ticket Title</th>
+<th>Assigned To</th>
+<th>Company Name</th>
+<th>Location</th>
+<th>Due Date</th>
+<th>Priority Level</th>
+<th>Ticket Status</th>
+<th>Date Created</th>
+</thead>
+<tbody>
+<tr ng-repeat="ticket in tickets.tickets" ng-show="showTicketByStatus(ticket)" ng-if="showTicketByCompany(ticket)"> <!--ng-if="selectedPriority() && selectedStatus()"> -->
+<td>{{ticket.id}}</td>
+<td>{{ticket.tickettitle}}</td>
+<td>{{ticket.assignedto}}</td>
+<td>{{ticket.companyname}}</td>
+<td>{{ticket.location}}</td>
+<td>{{ticket.duedate}}</td>
+<td>{{ticket.prioritylevel}}</td>
+<td>{{ticket.status}}</td>
+<td>{{ticket.timestamp | date :  "fullDate"}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</body>
+<% include ./partials/footer %>
